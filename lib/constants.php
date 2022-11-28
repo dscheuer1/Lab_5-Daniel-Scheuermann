@@ -14,5 +14,5 @@ define ('BASE_PATH', DOMAIN . PATH_PARTS[basename(__DIR__)] . '/');
 
 define ('LIB_PATH', 'lib/');
 
-define('DATABASE_NAME', 'DSCHEUER_picturesightData');
+define('DATABASE_NAME', 'DSCHEUER_employees');
 ?>
