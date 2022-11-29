@@ -1,7 +1,9 @@
-#sql {
+.sql {
     font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
     margin:auto;
-    width: 50%;
+    width: 75%;
 }
 
 #employees {
@@ -25,3 +27,11 @@
     background-color: #1357a6;
     color: white;
   }
+
+  a:link { text-decoration: none; color: white; }
+
+  a:visited { text-decoration: none; color: white; }
+  
+  a:hover { text-decoration: none; color: white;}
+  
+  a:active { text-decoration: none; color: white; }
