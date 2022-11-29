@@ -8,7 +8,7 @@ include 'top.php';
 
     $order = isset($_GET['order'])?$_GET['order']:'pmkEmployeeId';
     $direction = isset($_GET['direction'])?$_GET['direction']:'ASC';
-    $page = isset($_GET['page'])?$_GET['page']:0;
+    $page = isset($_GET['page'])?$_GET['page']:1;
     
     $sql = 'SELECT pmkEmployeeId, fldName, fldSalary, fldHighestDegree ';
     $sql .= 'FROM tblEmployees ';
@@ -21,43 +21,52 @@ include 'top.php';
     print '<table id="employees">';
 
     print '<tr>';
+
     if (strcmp($direction, "ASC") == 0) {
-        print '<th><a href="index.php?order=pmkEmployeeId&direction=DESC&page=0">ID</a></th>';
+        print '<th><a href="index.php?order=pmkEmployeeId&direction=DESC">ID</a></th>';
     } else {
-        print '<th><a href="index.php?order=pmkEmployeeId&direction=ASC&page=0">ID</a></th>';
+        print '<th><a href="index.php?order=pmkEmployeeId&direction=ASC">ID</a></th>';
     }
 
 
     if (strcmp($direction, "ASC") == 0) {
-        print '<th><a href="index.php?order=fldName&direction=DESC&page=0">Name</a></th>';
+        print '<th><a href="index.php?order=fldName&direction=DESC">Name</a></th>';
     } else {
-        print '<th><a href="index.php?order=fldName&direction=ASC&page=0">Name</a></th>';
+        print '<th><a href="index.php?order=fldName&direction=ASC">Name</a></th>';
     }
 
 
     if (strcmp($direction, "ASC") == 0) {
-        print '<th><a href="index.php?order=fldSalary&direction=DESC&page=0">Salary</a></th>';
+        print '<th><a href="index.php?order=fldSalary&direction=DESC">Salary</a></th>';
     } else {
-        print '<th><a href="index.php?order=fldSalary&direction=ASC&page=0">Salary</a></th>';
+        print '<th><a href="index.php?order=fldSalary&direction=ASC">Salary</a></th>';
     }
 
     if (strcmp($direction, "ASC") == 0) {
-        print '<th><a href="index.php?order=fldHighestDegree&direction=DESC&page=0">Degree</a></th>';
+        print '<th><a href="index.php?order=fldHighestDegree&direction=DESC">Degree</a></th>';
     } else {
-        print '<th><a href="index.php?order=fldHighestDegree&direction=ASC&page=0">Degree</a></th>';
+        print '<th><a href="index.php?order=fldHighestDegree&direction=ASC">Degree</a></th>';
     }
 
 
     print '</tr>';
 
-    for (int i = $page; i < $page+10; $page++) {
+    foreach (array_slice($records, $page*10, 10) as $record) {
         print '<tr>' . PHP_EOL;
-        print '<td>' . $records[i]['pmkEmployeeId'] . '</td>' . PHP_EOL;
-        print '<td>' . $records[i]['fldName'] . '</td>' . PHP_EOL;
-        print '<td>' . $records[i]['fldSalary'] . '</td>' . PHP_EOL;
-        print '<td>' . $records[i]['fldHighestDegree'] . '</td>' . PHP_EOL;
+        print '<td>' . $record['pmkEmployeeId'] . '</td>' . PHP_EOL;
+        print '<td>' . $record['fldName'] . '</td>' . PHP_EOL;
+        print '<td>' . $record['fldSalary'] . '</td>' . PHP_EOL;
+        print '<td>' . $record['fldHighestDegree'] . '</td>' . PHP_EOL;
         print '</tr>' . PHP_EOL;
     }
+
+    print '<tr>';
+    print '<th colspan="4" class="nav">';
+    print '<a href="index.php?order=' . $order . '&direction=' . $direction . "&page=" . $page-1 . '" class="arrow"> << </a>';
+    print '   ' . $page . '   ';
+    print '<a href="index.php?order=' . $order . '&direction=' . $direction . "&page=" . $page+1 . '" class="arrow"> >> </a>';
+    print '</th>';
+    print '</tr>';
 
     print '</table>';
     ?>

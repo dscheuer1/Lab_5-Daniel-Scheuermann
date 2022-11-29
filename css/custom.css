@@ -6,6 +6,15 @@
     width: 75%;
 }
 
+.nav {
+    margin: auto;
+    text-align: center !important;
+}
+
+.arrow {
+    margin: 0 4em;
+}
+
 #employees {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -35,3 +44,4 @@
   a:hover { text-decoration: none; color: white;}
   
   a:active { text-decoration: none; color: white; }
+
