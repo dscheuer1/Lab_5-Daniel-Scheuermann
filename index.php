@@ -23,29 +23,29 @@ include 'top.php';
     print '<tr>';
 
     if (strcmp($direction, "ASC") == 0) {
-        print '<th><a href="index.php?order=pmkEmployeeId&direction=DESC">ID</a></th>';
+        print '<th><a class="head" href="index.php?order=pmkEmployeeId&direction=DESC">ID</a></th>';
     } else {
-        print '<th><a href="index.php?order=pmkEmployeeId&direction=ASC">ID</a></th>';
+        print '<th><a class="head" href="index.php?order=pmkEmployeeId&direction=ASC">ID</a></th>';
     }
 
 
     if (strcmp($direction, "ASC") == 0) {
-        print '<th><a href="index.php?order=fldName&direction=DESC">Name</a></th>';
+        print '<th><a class="head" href="index.php?order=fldName&direction=DESC">Name</a></th>';
     } else {
-        print '<th><a href="index.php?order=fldName&direction=ASC">Name</a></th>';
+        print '<th><a class="head" href="index.php?order=fldName&direction=ASC">Name</a></th>';
     }
 
 
     if (strcmp($direction, "ASC") == 0) {
-        print '<th><a href="index.php?order=fldSalary&direction=DESC">Salary</a></th>';
+        print '<th><a class="head" href="index.php?order=fldSalary&direction=DESC">Salary</a></th>';
     } else {
-        print '<th><a href="index.php?order=fldSalary&direction=ASC">Salary</a></th>';
+        print '<th><a class="head" href="index.php?order=fldSalary&direction=ASC">Salary</a></th>';
     }
 
     if (strcmp($direction, "ASC") == 0) {
-        print '<th><a href="index.php?order=fldHighestDegree&direction=DESC">Degree</a></th>';
+        print '<th><a class="head" href="index.php?order=fldHighestDegree&direction=DESC">Degree</a></th>';
     } else {
-        print '<th><a href="index.php?order=fldHighestDegree&direction=ASC">Degree</a></th>';
+        print '<th><a class="head" href="index.php?order=fldHighestDegree&direction=ASC">Degree</a></th>';
     }
 
 
@@ -62,9 +62,14 @@ include 'top.php';
 
     print '<tr>';
     print '<th colspan="4" class="nav">';
-    print '<a href="index.php?order=' . $order . '&direction=' . $direction . "&page=" . $page-1 . '" class="arrow"> << </a>';
-    print '   ' . $page . '   ';
-    print '<a href="index.php?order=' . $order . '&direction=' . $direction . "&page=" . $page+1 . '" class="arrow"> >> </a>';
+    if ($page > 0) {
+        print '<a class="head arrow" href="index.php?order=' . $order . '&direction=' . $direction . "&page=" . $page-1 . '" class="arrow"> << </a>';
+    } else {
+        print '<a class="head arrow" href="index.php?order=' . $order . '&direction=' . $direction . "&page=0" . '"> << </a>';
+
+    }
+    print '   ' . $page+1 . '   ';
+    print '<a class="head arrow" href="index.php?order=' . $order . '&direction=' . $direction . "&page=" . $page+1 . '"> >> </a>';
     print '</th>';
     print '</tr>';
 
